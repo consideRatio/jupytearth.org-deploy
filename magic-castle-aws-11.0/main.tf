@@ -7,8 +7,8 @@ module "aws" {
   config_git_url = "https://github.com/ComputeCanada/puppet-magic_castle.git"
   config_version = "11.0"
 
-  cluster_name = "phoenix"
-  domain       = "calculquebec.cloud"
+  cluster_name = "jmte"
+  domain       = "jmte.sundellopensource.com"
   image        = "ami-033e6106180a626d0" # CentOS 7 -  ca-central-1
 
   instances = {
@@ -32,7 +32,7 @@ module "aws" {
   guest_passwd = ""
 
   # AWS specifics
-  region            = "ca-central-1"
+  region            = "us-west-2"
 }
 
 output "accounts" {
