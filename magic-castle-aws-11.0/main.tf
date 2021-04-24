@@ -9,7 +9,10 @@ module "aws" {
 
   cluster_name = "jmte"
   domain       = "jmte.sundellopensource.com"
-  image        = "ami-033e6106180a626d0" # CentOS 7 -  ca-central-1
+  # image: choose an image associated with the AWS region
+  # https://gist.github.com/gene1wood/56e42097e0f0ac1aace14cbc41ee3e11
+  #
+  image        = "ami-0eab3a90fc693af19" # CentOS 7, CentOS7x8664EBSHVM, us-west-2
 
   instances = {
     mgmt  = { type = "t3.large",  count = 1, tags = ["mgmt", "puppet", "nfs"] },
