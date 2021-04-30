@@ -8,8 +8,8 @@ module "aws" {
   config_git_url = "https://github.com/ComputeCanada/puppet-magic_castle.git"
   config_version = "11.0"
 
-  cluster_name = "jmte"
-  domain       = "jmte.sundellopensource.com"
+  cluster_name = "mc"
+  domain       = "jupytearth.org"
   # image: you need to adjust the image to your AWS region and provide a recent
   #        image, and that information isn't easily accessible. To do that, I've
   #        used the referenced script to get a list of relevant images.
@@ -65,18 +65,18 @@ output "public_ip" {
 #   sudoer_username  = module.aws.accounts.sudoer.username
 # }
 
-## Uncomment to register your domain name with Google Cloud
-# module "dns" {
-#   source           = "./dns/gcloud"
-#   email            = "you@example.com"
-#   project          = "your-project-id"
-#   zone_name        = "you-zone-name"
-#   name             = module.aws.cluster_name
-#   domain           = module.aws.domain
-#   public_instances = module.aws.public_instances
-#   ssh_private_key  = module.aws.ssh_private_key
-#   sudoer_username  = module.aws.accounts.sudoer.username
-# }
+# Uncomment to register your domain name with Google Cloud
+module "dns" {
+  source           = "./dns/gcloud"
+  email            = "erik@sundellopensource.se"
+  project          = "domains-sos"
+  zone_name        = "jupytearth-org"
+  name             = module.aws.cluster_name
+  domain           = module.aws.domain
+  public_instances = module.aws.public_instances
+  ssh_private_key  = module.aws.ssh_private_key
+  sudoer_username  = module.aws.accounts.sudoer.username
+}
 
 # output "hostnames" {
 # 	value = module.dns.hostnames
