@@ -39,6 +39,10 @@ module "aws" {
   guest_passwd = ""
 
   # AWS specifics
+  # region: chosen to be co-located to cmip6-psd dataset on S3
+  #
+  #         ref: https://registry.opendata.aws/cmip6/
+  #
   region            = "us-west-2"
 }
 
