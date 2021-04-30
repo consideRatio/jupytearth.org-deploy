@@ -2,6 +2,7 @@ terraform {
   required_version = ">= 0.14.2"
 }
 
+# This section is documented in docs/README.md section: 4. Configuration
 module "aws" {
   source         = "./aws"
   config_git_url = "https://github.com/ComputeCanada/puppet-magic_castle.git"
@@ -9,10 +10,13 @@ module "aws" {
 
   cluster_name = "jmte"
   domain       = "jmte.sundellopensource.com"
-  # image: choose an image associated with the AWS region
-  # https://gist.github.com/gene1wood/56e42097e0f0ac1aace14cbc41ee3e11
+  # image: you need to adjust the image to your AWS region and provide a recent
+  #        image, and that information isn't easily accessible. To do that, I've
+  #        used the referenced script to get a list of relevant images.
   #
-  image        = "ami-0eab3a90fc693af19" # CentOS 7, CentOS7x8664EBSHVM, us-west-2
+  #        ref: https://gist.github.com/gene1wood/56e42097e0f0ac1aace14cbc41ee3e11#file-create_centos7_cloudformation_ami_mapping-py
+  #
+  image        = "ami-0bc06212a56393ee1" # CentOS Linux 7, 7.9.2009, us-west-2, x86_64
 
   instances = {
     mgmt  = { type = "t3.large",  count = 1, tags = ["mgmt", "puppet", "nfs"] },
