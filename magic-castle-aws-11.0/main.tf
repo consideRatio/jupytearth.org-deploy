@@ -32,7 +32,7 @@ module "aws" {
     }
   }
 
-  public_keys = [file("~/.ssh/id_rsa.pub")]
+  public_keys = [file("../admin-ssh-keys/erik.pub"), file("../admin-ssh-keys/anderson.pub")]
 
   nb_users     = 10
   # Shared password, randomly chosen if blank
