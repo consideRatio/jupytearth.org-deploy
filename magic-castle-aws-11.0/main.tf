@@ -21,14 +21,14 @@ module "aws" {
   instances = {
     mgmt  = { type = "t3.large",  count = 1, tags = ["mgmt", "puppet", "nfs"] },
     login = { type = "t3.medium", count = 1, tags = ["login", "public", "proxy"] },
-    node  = { type = "t3.medium",  count = 3, tags = ["node"] }
+    node  = { type = "t3.large", count = 1, tags = ["node"] }
   }
 
   volumes = {
     nfs = {
       home     = { size = 10, type = "gp2" }
       project  = { size = 50, type = "gp2" }
-      scratch  = { size = 50, type = "gp2" }
+      scratch  = { size = 1000, type = "gp2" }
     }
   }
 
